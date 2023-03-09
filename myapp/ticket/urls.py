@@ -1,0 +1,10 @@
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from ticket import views
+
+router = DefaultRouter()
+router.register(r'ticket-type', views.TicketTypeViewSet, basename='ticket-type')
+
+urlpatterns = [
+    path('', include(router.urls)),
+]
