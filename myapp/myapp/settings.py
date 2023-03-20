@@ -38,10 +38,10 @@ CORS_ALLOWED_ORIGINS = [
 
 INSTALLED_APPS = [
     'corsheaders',
-    # 'application.apps.ApplicationConfig',
     'volunteer.apps.VolunteerConfig',
     'event.apps.EventConfig',
     'ticket.apps.TicketConfig',
+    'payment.apps.PaymentConfig',
     'rest_framework',
     'user.apps.UserConfig',
     'django.contrib.admin',

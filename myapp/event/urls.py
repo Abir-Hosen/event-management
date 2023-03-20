@@ -4,7 +4,7 @@ from event.views import EventViewSet, WhenEventViewSet, WhereEventViewSet, HowMu
     SellingEventViewSet
 
 router = DefaultRouter()
-router.register(r'', EventViewSet, basename='event')
+router.register(r'events', EventViewSet, basename='event')
 router.register(r'event-category', EventCategoryViewSet, basename='event-category')
 router.register(r'where-event', WhereEventViewSet, basename='where-event')
 router.register(r'when-event', WhenEventViewSet, basename='when-event')

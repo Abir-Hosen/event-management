@@ -48,7 +48,7 @@ class Role(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     # permission
-    permission = models.OneToOneField(Permission, on_delete=models.CASCADE)
+    permission = models.ForeignKey(Permission, on_delete=models.CASCADE)
 
 
 
@@ -59,8 +59,9 @@ class User(models.Model):
     user_name = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=500)
     active = models.BooleanField(default=True)
+    event_creator = models.BooleanField(default=False, null=True)
     # roles
-    role = models.OneToOneField(Role, on_delete=models.DO_NOTHING)
+    role = models.ForeignKey(Role, on_delete=models.DO_NOTHING, null=True)
 
 
 class Address(models.Model):
@@ -73,5 +74,5 @@ class Address(models.Model):
     country = models.CharField(max_length=200)
     google_map_url = models.URLField(max_length=200)
     # user
-    user= models.OneToOneField(User, on_delete=models.DO_NOTHING)
+    user= models.ForeignKey(User, on_delete=models.DO_NOTHING)
 

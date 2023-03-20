@@ -10,31 +10,40 @@ class EventCategorySerializer(serializers.HyperlinkedModelSerializer):
 
 
 class WhenEventSerializer(serializers.HyperlinkedModelSerializer):
+    event = serializers.PrimaryKeyRelatedField(queryset=Event.objects.all(), many=False)
+
     class Meta:
         model = WhenEvent
-        fields = ['id', 'name', 'description']
+        fields = ['id', 'start_date', 'end_date', 'start_time', 'end_time', 'event']
 
 
 class WhereEventSerializer(serializers.HyperlinkedModelSerializer):
+    event = serializers.PrimaryKeyRelatedField(queryset=Event.objects.all(), many=False)
+
     class Meta:
         model = WhereEvent
-        fields = ['id', 'name', 'description']
+        fields = ['id', 'name', 'description', 'event']
 
 
 class HowMuchEventSerializer(serializers.HyperlinkedModelSerializer):
+    event = serializers.PrimaryKeyRelatedField(queryset=Event.objects.all(), many=False)
+
     class Meta:
         model = HowMuchEvent
-        fields = ['id', 'name', 'description']
+        fields = ['id', 'quantity', 'price', 'event']
 
 
 class SellingEventSerializer(serializers.HyperlinkedModelSerializer):
+    event = serializers.PrimaryKeyRelatedField(queryset=Event.objects.all(), many=False)
+
     class Meta:
         model = SellingEvent
-        fields = ['id', 'name', 'description']
+        fields = ['id', 'refund', 'policy', 'terms_n_conditions', 'stripe_payment', 'event']
 
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
+    category = serializers.PrimaryKeyRelatedField(queryset=EventCategory.objects.all(), many=False)
+
     class Meta:
         model = Event
-        fields = ['id', 'name', 'description']
-
+        fields = ['id', 'title', 'published', 'description', 'category', 'status']
